@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 21:19:28 by ncolomer          #+#    #+#              #
-#    Updated: 2024/11/06 21:53:42 by yosherau         ###   ########.fr        #
+#    Updated: 2024/11/07 15:52:10 by yosherau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
+
+# bonus:			$(OBJS) $(BONUS_OBJS)
+# 				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
