@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:17:15 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/09 14:55:17 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/09 22:40:20 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (lst == NULL || (*lst) == NULL || !new)
+	t_list	*ptr;
+
+	if (!lst || !new)
 		return ;
-	while ((*lst)->next != NULL)
-		*lst = (*lst)->next;
-	(*lst)->next = new;
+	ptr = ft_lstlast(*lst);
+	if (!ptr)
+		ft_lstadd_front(lst, new);
+	else
+		ptr -> next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 19:10:47 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/06 21:07:27 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:45:56 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	while (*src && copy_len++ < dstsize - 1)
 		*dst++ = *src++;
-	if (copy_len < dstsize)
+	if (copy_len <= dstsize)
 		*dst = '\0';
 	return (ret_value);
 }

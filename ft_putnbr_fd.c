@@ -6,13 +6,15 @@
 /*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:37:21 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/07 15:40:09 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/09 23:20:50 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// void	ft_putnbr_fd(int n, int fd)
-// {
-	
-// }
+void	ft_putnbr_fd(int n, int fd)
+{
+	char character;
+
+	character = n + '0';
+}
