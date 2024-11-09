@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:36:29 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/07 16:48:46 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:06:18 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstdelone(t_list	*lst, void (*del)(void *))
 {
 	if (!lst)
-		return (0);
+		return ;
 	del(lst->content);
 	free(lst);
 }

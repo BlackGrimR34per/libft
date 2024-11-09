@@ -6,7 +6,7 @@
 #    By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 21:19:28 by ncolomer          #+#    #+#              #
-#    Updated: 2024/11/07 15:52:10 by yosherau         ###   ########.fr        #
+#    Updated: 2024/11/09 14:11:14 by yosherau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ SRCS			=	ft_isalnum.c ft_isprint.c \
 OBJS			= $(SRCS:.c=.o)
 
 BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
-					ft_lstdelone.c ft_lstiter.c ./libftft_lstlast.c \
+					ft_lstdelone.c ft_lstiter.c ft_lstlast.c\
 					ft_lstmap.c ft_lstnew.c ft_lstsize.c
+
 BONUS_OBJS		= $(BONUS:.c=.o)
 
 CC				= cc
@@ -40,8 +41,8 @@ all:			$(NAME)
 $(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
 
-# bonus:			$(OBJS) $(BONUS_OBJS)
-# 				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus:			$(OBJS) $(BONUS_OBJS)
+				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
@@ -51,7 +52,7 @@ fclean:			clean
 
 re:				fclean $(NAME)
 
-so:				$(OBJS)
-				$(CC) -nostartfiles -fPIC -shared -o $(SO_NAME) $(OBJS)
+so:				$(OBJS) $(BONUS_OBJS)
+				$(CC) -nostartfiles -fPIC -shared -o $(SO_NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY:			all clean fclean re bonus
