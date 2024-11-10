@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:34:46 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/06 12:39:24 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:42:03 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_count_words(const char *s, char c)
 {
 	int	word_count;
 
-	if (*s)
+	if (!*s)
 		return (0);
 	word_count = 0;
 	while (*s)
@@ -37,7 +37,7 @@ char	**ft_split(const char *s, char c)
 	size_t	word_len;
 	int		index;
 
-	output = (char **)malloc(sizeof(char *) * ft_count_words(s, c));
+	output = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!output || !s)
 		return (0);
 	index = 0;

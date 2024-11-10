@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 13:22:10 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/09 14:11:49 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 03:59:23 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*ret;
 	t_list	*ptr;
-	t_list	*node;
+	t_list	*tmp;
+	void	*content;
 
-	ret = (t_list *)malloc(sizeof(t_list) * ft_lstsize(lst));
-	ptr = lst;
-	while (ptr)
+	if (!lst || !f || !del)
+		return (NULL);
+	ptr = NULL;
+	content = NULL;
+	while (lst != NULL)
 	{
-		node = ft_lstnew(ptr->content);
-		node->content = f(node->content);
-		ft_lstadd_back(&ret, node);
-		ptr = ptr->next;
+		tmp = lst->next;
+		content = f(lst->content);
+		if (!content)
+		{
+			ft_lstclear(&ptr, del);
+			break ;
+		}
+		content = ft_strdup(content);
+		ft_lstadd_back(&ptr, ft_lstnew(content));
+		del(lst->content);
+		lst = tmp;
 	}
-	ft_lstclear(&lst, del);
-	return (ret);
-}	
+	return (ptr);
+}

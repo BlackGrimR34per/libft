@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:37:21 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/09 23:20:50 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 02:28:16 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char character;
+	char	*character;
+	size_t	index;
 
-	character = n + '0';
+	character = ft_itoa(n);
+	index = 0;
+	while (character[index])
+		index++;
+	write(fd, character, index);
 }

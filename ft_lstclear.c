@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:48:57 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/09 23:02:18 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/10 22:17:22 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if ((*lst)->next != NULL)
-		ft_lstclear(&((*lst)->next), del);
-	else
+	t_list	*ptr;
+
+	if (!del || !lst || !*lst)
+		return ;
+	while (*lst)
 	{
+		ptr = (*lst)->next;
 		del((*lst)->content);
 		free(*lst);
+		*lst = ptr;
 	}
+	*lst = NULL;
 }
