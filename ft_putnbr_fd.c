@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:37:21 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/11 02:28:16 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:57:25 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*character;
-	size_t	index;
+	unsigned int	nbr;
 
-	character = ft_itoa(n);
-	index = 0;
-	while (character[index])
-		index++;
-	write(fd, character, index);
+	nbr = 0;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = (unsigned int)(n * -1);
+	}
+	else
+		nbr = (unsigned int)n;
+	if (nbr >= 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd((char)(nbr % 10) + 48, fd);
 }

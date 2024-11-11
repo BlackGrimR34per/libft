@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 16:30:09 by yosherau          #+#    #+#             */
-/*   Updated: 2024/10/29 22:13:22 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:06:22 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	c = (unsigned char)c;
 	while (*s)
 	{
 		if (*s == c)
@@ -22,5 +23,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (*s == c)
 		return ((char *)s);
-	return (0);
+	return (NULL);
 }

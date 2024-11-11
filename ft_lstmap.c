@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 13:22:10 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/11 10:48:37 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 17:03:46 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&ptr, del);
 			break ;
 		}
-		content = ft_strdup(content);
 		ft_lstadd_back(&ptr, ft_lstnew(content));
-		del(lst->content);
 		lst = tmp;
 	}
 	return (ptr);

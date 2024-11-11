@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:18:42 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/11 03:07:27 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:18:57 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	start = (char *)s1;
 	end = (char *)s1 + ft_strlen(s1) - 1;
-	while (ft_strchr(set, *start))
+	while (*start && ft_strchr(set, *start))
 		start++;
-	while (ft_strchr(set, *end))
+	while (end >= start && ft_strchr(set, *end))
 		end--;
 	if (start > end)
 		return (ft_strdup(""));
