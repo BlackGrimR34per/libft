@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:34:46 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/10 21:42:03 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/11/20 21:35:48 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_split(const char *s, char c)
 	int		index;
 
 	output = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!output || !s)
+	if (!output)
 		return (0);
 	index = 0;
 	while (*s)
