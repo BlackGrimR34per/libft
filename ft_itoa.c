@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:03:54 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/11 22:06:14 by yosherau         ###   ########.fr       */
+/*   Updated: 2024/12/29 13:14:54 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,3 @@ char	*ft_itoa(int n)
 		output[nbr_len] = '-';
 	return (output);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	printf("%zu", ft_nb_len(-2147483648));
-// }
