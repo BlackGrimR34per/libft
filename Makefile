@@ -6,7 +6,7 @@
 #    By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 09:34:57 by yosherau          #+#    #+#              #
-#    Updated: 2024/11/11 20:22:04 by yosherau         ###   ########.fr        #
+#    Updated: 2025/01/06 18:25:31 by yosherau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,45 +22,45 @@ BONUS_SRCS		=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c			\
 					ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c		\
 					ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-OBJS			=	$(SRCS:.c=.o)
+OBJS_DIR		=	obj
+OBJS			=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS))
 
-BONUS_OBJS		=	$(BONUS_SRCS:.c=.o)
+BONUS_OBJS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(BONUS_SRCS))
 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 
 NAME			=	libft.a
+
+all:				$(NAME)
+
+RM				=	rm -rf
+
+$(NAME):			$(OBJS)
+					ar rcs $(NAME) $(OBJS)
+
+$(OBJS_DIR)/%.o:	%.c
+					mkdir -p $(OBJS_DIR)
+					$(CC) $(CFLAGS) -c $< -o $@
+
+bonus:				$(OBJS) $(BONUS_OBJS)
+					ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+clean:
+					$(RM) $(OBJS_DIR)
+
+fclean:				clean
+					$(RM) $(NAME)
+
+re:					fclean all
+
+.PHONY:				all clean fclean re bonus
+
 # SO_NAME			=	libft.so
 
 # ifeq ($(MAKECMDGOALS), bonus)
 # 	OBJS += $(BONUS_OBJS)
 # endif
 
-all:				$(NAME)
-
-RM				=	rm -f
-
-$(NAME):			$(OBJS)
-					ar rcs $(NAME) $(OBJS)
-
-$(OBJS):			$(SRCS)
-					$(CC) $(CFLAGS) -c $^
-
-$(BONUS_OBJS):		$(BONUS_SRCS)
-					$(CC) $(CFLAGS) -c $^
-
-bonus:				$(OBJS) $(BONUS_OBJS)
-					ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-clean:
-					$(RM) $(OBJS) $(BONUS_OBJS)
-
-fclean:				clean
-					$(RM) $(NAME)
-
-re:					fclean $(NAME)
-
 # so:					$(OBJS)
 # 					$(CC) -nostartfiles -fPIC -shared -o $(SO_NAME) $(OBJS)
-
-phony:				all clean fclean re bonus
