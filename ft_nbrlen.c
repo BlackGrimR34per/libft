@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysheraun <ysheraun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:03:54 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 08:40:20 by ysheraun         ###   ########.fr       */
+/*   Created: 2025/02/01 08:32:39 by ysheraun          #+#    #+#             */
+/*   Updated: 2025/02/01 08:34:16 by ysheraun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int nbr)
+size_t	ft_nbrlen(int nbr)
 {
-	size_t	nbrlen;
-	char	*str;
-	long	tempnbr;
+	size_t	len;
 
-	tempnbr = nbr;
-	nbrlen = ft_nbrlen(nbr);
-	str = (char *)malloc(sizeof(char) * (nbrlen + 1));
-	if (!str)
-		return (0);
-	if (tempnbr < 0)
-		tempnbr = -tempnbr;
-	str[nbrlen--] = '\0';
-	while (tempnbr > 0)
+	len = 0;
+	if (nbr < 0)
 	{
-		str[nbrlen--] = (tempnbr % 10) + 48;
-		tempnbr /= 10;
+		len++;
+		nbr = -nbr;
 	}
 	if (nbr == 0)
-		str[nbrlen] = '0';
-	if (nbr < 0)
-		str[nbrlen] = '-';
-	return (str);
+		len++;
+	while (nbr != 0)
+	{
+		len++;
+		nbr /= 10;
+	}
+	return (len);
 }
