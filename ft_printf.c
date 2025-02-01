@@ -6,13 +6,13 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:04:40 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 12:09:04 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/02/01 13:03:26 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_handle_specifier(char c, va_list *ap)
+static int	ft_handle_specifier(char c, va_list *ap)
 {
 	if (!ap)
 		return (0);

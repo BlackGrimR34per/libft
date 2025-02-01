@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:36:55 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 12:12:58 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/02/01 14:27:16 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+
+# ifdef __linux__
+#  define OPEN_MAX 1024
+#  define THE_ABSENCE_OF_VALUE "(nil)"
+# elif __APPLE__
+#  include <limits.h>
+#  define THE_ABSENCE_OF_VALUE "0x0"
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -30,12 +42,7 @@ typedef struct s_list
 # define LOWERCASE_SELECTOR 0
 # define UPPERCASE_SELECTOR 1
 # define STR_NULL "(null)"
-
-# ifdef __linux__
-#  define THE_ABSENCE_OF_VALUE "(nil)"
-# elif __APPLE__
-#  define THE_ABSENCE_OF_VALUE "0x0"
-# endif
+# define NEWLINE '\n'
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -62,6 +69,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
 size_t	ft_nbrlen(int nbr);
+int		ft_printf(const char *format, ...);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_puthex(unsigned int nbr, int selector);
@@ -87,5 +95,6 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_uitoa_base(unsigned long nbr, char *base);
 size_t	ft_unbrlen(unsigned long nbr, size_t baselen);
+char	*get_next_line(int fd);
 
 #endif

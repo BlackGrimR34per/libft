@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:22:28 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/04 16:18:32 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/02/01 14:25:20 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ret = malloc(sizeof(char) * (len_s1 + len_s2) + 1);
 	index = 0;
 	if (!ret)
-		return (0);
+		return (NULL);
 	while (*s1 || *s2)
 	{
 		if (*s1)
