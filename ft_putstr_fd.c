@@ -6,18 +6,15 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:23:46 by yosherau          #+#    #+#             */
-/*   Updated: 2024/11/06 21:34:29 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:11:04 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-	size_t	len;
-
 	if (!s)
-		return ;
-	len = ft_strlen(s);
-	write(fd, s, len);
+		return (write(fd, STR_NULL, ft_strlen(STR_NULL)));
+	return (write(fd, s, ft_strlen(s)));
 }

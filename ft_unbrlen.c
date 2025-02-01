@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_unbrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:02:50 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 11:46:18 by yosherau         ###   ########.fr       */
+/*   Created: 2025/02/01 10:41:39 by yosherau          #+#    #+#             */
+/*   Updated: 2025/02/01 11:40:13 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+size_t	ft_unbrlen(unsigned long nbr, size_t baselen)
 {
-	int	count;
+	size_t	len;
 
-	if (!lst)
-		return (0);
-	count = 0;
-	while (lst)
+	len = 0;
+	if (nbr == 0)
+		len++;
+	while (nbr != 0)
 	{
-		count++;
-		lst = lst->next;
+		len++;
+		nbr /= baselen;
 	}
-	return (count);
+	return (len);
 }

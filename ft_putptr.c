@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:02:50 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 11:46:18 by yosherau         ###   ########.fr       */
+/*   Created: 2025/02/01 10:29:41 by yosherau          #+#    #+#             */
+/*   Updated: 2025/02/01 12:10:28 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_putptr(void *ptr)
 {
-	int	count;
+	char	*str;
+	size_t	count;
 
-	if (!lst)
-		return (0);
-	count = 0;
-	while (lst)
-	{
-		count++;
-		lst = lst->next;
-	}
+	if (!ptr)
+		return (ft_putstr_fd(THE_ABSENCE_OF_VALUE, STD_OUT));
+	str = ft_uitoa_base((unsigned long)ptr, BASE_16_LOWERCASE);
+	count = ft_putstr_fd("0x", STD_OUT) + ft_putstr_fd(str, STD_OUT);
+	free(str);
 	return (count);
 }

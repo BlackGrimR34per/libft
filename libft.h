@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysheraun <ysheraun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:36:55 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 08:40:45 by ysheraun         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:12:58 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,27 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+# define BASE_16_LOWERCASE "0123456789abcdef"
+# define BASE_16_UPPERCASE "0123456789ABCDEF"
+# define BASE_10 "0123456789"
+# define STD_OUT 1
+# define LOWERCASE_SELECTOR 0
+# define UPPERCASE_SELECTOR 1
+# define STR_NULL "(null)"
+
+# ifdef __linux__
+#  define THE_ABSENCE_OF_VALUE "(nil)"
+# elif __APPLE__
+#  define THE_ABSENCE_OF_VALUE "0x0"
+# endif
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -46,11 +61,14 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-int		ft_nbrlen(int nbr);
-void	ft_putchar_fd(char c, int fd);
+size_t	ft_nbrlen(int nbr);
+int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_puthex(unsigned int nbr, int selector);
+int		ft_putnbr_fd(int n, int fd);
+int		ft_putptr(void *ptr);
+int		ft_putstr_fd(char *s, int fd);
+int		ft_putunbr(unsigned int nbr);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
@@ -67,5 +85,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_uitoa_base(unsigned long nbr, char *base);
+size_t	ft_unbrlen(unsigned long nbr, size_t baselen);
 
 #endif
