@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 08:44:05 by ysheraun          #+#    #+#             */
-/*   Updated: 2025/02/02 20:11:27 by yosherau         ###   ########.fr       */
+/*   Created: 2025/02/01 10:29:41 by yosherau          #+#    #+#             */
+/*   Updated: 2025/02/02 20:19:14 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_puthex_fd(unsigned int nbr, int selector, int fd)
+int	ft_putptr_fd(void *ptr, int fd)
 {
 	char	*str;
 	size_t	count;
 
-	if (selector == 0)
-		str = ft_uitoa_base(nbr, BASE_16_LOWERCASE);
-	else
-		str = ft_uitoa_base(nbr, BASE_16_UPPERCASE);
-	count = ft_strlen(str);
-	ft_putstr_fd(str, fd);
+	if (!ptr)
+		return (ft_putstr_fd(THE_ABSENCE_OF_VALUE, STD_OUT));
+	str = ft_uitoa_base((unsigned long)ptr, BASE_16_LOWERCASE);
+	count = ft_putstr_fd("0x", fd) + ft_putstr_fd(str, fd);
 	free(str);
 	return (count);
 }

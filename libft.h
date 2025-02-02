@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:36:55 by yosherau          #+#    #+#             */
-/*   Updated: 2025/02/01 14:27:16 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/02/02 20:19:26 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ size_t	ft_nbrlen(int nbr);
 int		ft_printf(const char *format, ...);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
-int		ft_puthex(unsigned int nbr, int selector);
+int		ft_puthex_fd(unsigned int nbr, int selector, int fd);
 int		ft_putnbr_fd(int n, int fd);
-int		ft_putptr(void *ptr);
+int		ft_putptr_fd(void *ptr, int fd);
 int		ft_putstr_fd(char *s, int fd);
-int		ft_putunbr(unsigned int nbr);
+int		ft_putunbr_fd(unsigned int nbr, int fd);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
