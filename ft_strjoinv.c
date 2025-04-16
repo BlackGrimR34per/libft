@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoinv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 15:22:28 by yosherau          #+#    #+#             */
-/*   Updated: 2025/04/16 20:27:14 by yosherau         ###   ########.fr       */
+/*   Created: 2025/04/16 19:54:06 by yosherau          #+#    #+#             */
+/*   Updated: 2025/04/16 20:27:37 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoinv(int num, ...)
 {
-	int		index;
-	char	*ret;
-	size_t	len_s1;
-	size_t	len_s2;
+	va_list	ap;
+	char	*str;
+	char	*temp;
 
-	if (!s1 || !s2)
-		return (0);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	ret = malloc(sizeof(char) * (len_s1 + len_s2) + 1);
-	index = 0;
-	if (!ret)
-		return (NULL);
-	while (*s1 || *s2)
+	va_start(ap, num);
+	str = ft_strdup("");
+	while (num-- && str)
 	{
-		if (*s1)
-			ret[index++] = *s1++;
-		else
-			ret[index++] = *s2++;
+		temp = str;
+		str = ft_strjoin(str, va_arg(ap, char *));
+		free(temp);
 	}
-	ret[index] = '\0';
-	return (ret);
+	return (str);
 }
