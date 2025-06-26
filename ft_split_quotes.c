@@ -6,13 +6,13 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:34:46 by yosherau          #+#    #+#             */
-/*   Updated: 2025/06/26 18:58:21 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:27:18 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	handle_quotes(const char **s)
+static void	handle_quotes(const char **s)
 {
 	char	quote;
 
@@ -49,7 +49,7 @@ static int	ft_count_words(const char *s, char c)
 	return (word_count);
 }
 
-char	*extract_words(const char **s, char c)
+static char	*extract_words(const char **s, char c)
 {
 	char	quote;
 	size_t	word_len;
@@ -74,7 +74,7 @@ char	*extract_words(const char **s, char c)
 	}
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split_quotes(const char *s, char c)
 {
 	char	**output;
 	int		index;
