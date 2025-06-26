@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yosherau <yosherau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:36:55 by yosherau          #+#    #+#             */
-/*   Updated: 2025/04/16 20:22:13 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:28:35 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		ft_putnbr_fd(int n, int fd);
 int		ft_putptr_fd(void *ptr, int fd);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putunbr_fd(unsigned int nbr, int fd);
+char	**ft_split_quotes(const char *s, char c);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
