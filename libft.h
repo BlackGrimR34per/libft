@@ -6,7 +6,7 @@
 /*   By: yosherau <yosherau@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:36:55 by yosherau          #+#    #+#             */
-/*   Updated: 2025/06/26 19:28:35 by yosherau         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:19:02 by yosherau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		ft_putunbr_fd(unsigned int nbr, int fd);
 char	**ft_split_quotes(const char *s, char c);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s1);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
